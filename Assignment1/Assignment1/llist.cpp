@@ -106,7 +106,7 @@ string LinkedList::getValue(int nodenum)
 		node = node->next;
 	}
 	return val;
-} // End method getValud
+} // End method getValue
 
 void LinkedList::insertAtIndex(int index, string nLine)
 {
