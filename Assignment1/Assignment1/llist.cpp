@@ -22,72 +22,42 @@ LinkedList::~LinkedList()
 	}
 }
 
-void LinkedList::Add(int num)
+void LinkedList::add(string line)
 {
 	Node *node = new Node();
-	node->data = num;
+	node->line = line;
+	this->totalines++;
 
-	if (first == nullptr)
+	if (first == NULL)
 	{
 		first = node;
 	}
 	else
 	{
 		Node *currNode = first;
-		Node *prevNode = nullptr;
+		Node *prevNode = NULL;
 
-		while (currNode != nullptr)
+		while (currNode != NULL)
 		{
 			prevNode = currNode;
 			currNode = currNode->next;
 		}
 
-		if (prevNode != nullptr)
+		if (prevNode != NULL)
 		{
 			prevNode->next = node;
 		}
 	}
 }
 
-void LinkedList::DeleteValue(int value)
-{
-	Node *node = first;
-	Node *prev = nullptr;
-
-	while (node != nullptr)
-	{
-		if (node->data == value)
-		{
-			break;
-		}
-
-		prev = node;
-		node = node->next;
-	}
-
-	if (node != nullptr)
-	{
-		if (node == first)
-		{
-			first = node->next;
-		}
-		else
-		{
-			prev->next = node->next;
-		}
-
-		delete node;
-	}
-}
-
-void LinkedList::DeleteNode(int nodenum)
+void LinkedList::deleteNode(int nodenum)
 {
 	int index = -1;
 
 	Node *node = first;
-	Node *prev = nullptr;
+	Node *prev = NULL;
 
-	while (node != nullptr)
+	while (node != NULL)
 	{
 		index++;
 
@@ -112,101 +82,98 @@ void LinkedList::DeleteNode(int nodenum)
 		}
 
 		delete node;
+		totalines--;
 	}
-}
+} // End method deleteNode
 
-void LinkedList::InsertAfterValue(int value, int num)
-{
-	Node *node = new Node();
-	node->data = num;
-
-	// search for node to insert after
-	Node *prev = first;
-
-	while (prev != nullptr)
-	{
-		if (prev->data == value)
-		{
-			break;
-		}
-
-		prev = prev->next;
-	}
-
-	// insert node into list
-	if (first == nullptr)
-	{
-		first = node;
-	}
-	else
-	{
-		if (prev != nullptr)
-		{
-			node->next = prev->next;
-			prev->next = node;
-		}
-		else
-		{
-			// could not find the node to insert after
-			// so defaulting to Add function
-			Add(num);
-		}
-	}
-}
-
-void LinkedList::InsertBeforeNode(int nodenum, int num)
+string LinkedList::getValue(int nodenum)
 {
 	int index = -1;
-	Node *newnode = new Node();
-	newnode->data = num;
-	Node *node = first;
-	Node *prev = first;
+	string val = "";
 
-	while (node != nullptr)
+	Node *node = first;
+
+	while (node != NULL)
 	{
 		index++;
 
 		if (index == nodenum)
 		{
+			val = node->line;
 			break;
 		}
 
-		prev = node;
 		node = node->next;
 	}
+	return val;
+} // End method getValud
 
-	// insert node into list
-	if (first == nullptr)
+void LinkedList::insertAtIndex(int index, string nLine)
+{
+	Node *node = new Node();
+	node->line = nLine;
+	totalines++;
+
+	if (index == 0)
 	{
-		first = newnode;
+
+		node->next = first;
+		first = node;
+
 	}
 	else
 	{
-		if (node != nullptr)
+		index--;
+		int i = 0;
+		Node *prev = first;
+
+		while (prev != NULL)
 		{
-			prev->next = newnode;
-			newnode->next = node;
+			if (i == index)
+			{
+				break;
+			}
+
+			prev = prev->next;
+			i++;
+		} // End while
+
+		if (first == NULL)
+		{
+			first = node;
 		}
 		else
 		{
-			// could not find the node to insert after
-			// so defaulting to Add function
-			Add(num);
+			if (prev != NULL)
+			{
+				node->next = prev->next;
+				prev->next = node;
+			}
+			else
+			{
+				add(nLine);
+			}
 		}
-	}
-}
+	} // End else
+} // End method insertAtIndex
 
 ostream& operator<<(ostream& output, LinkedList& list)
 {
 	Node *currNode = list.first;
+	int i = 0;
 
-	while (currNode != nullptr)
+	// Loop while not empty
+	while (currNode != NULL)
 	{
-		output << "data = " << currNode->data << endl;
-
+		output << i << ":   " << currNode->line << endl;
 		currNode = currNode->next;
+		i++;
 	}
-
 	return output;
+}
+
+int LinkedList::getNumLines()
+{
+	return this->totalines;
 }
 

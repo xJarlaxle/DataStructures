@@ -1,19 +1,14 @@
-//
-// Created by prog2100 on 08/01/18.
-//
+#pragma once
+#include <string>
 
-#ifndef LINKEDLIST_NODE_H
-#define LINKEDLIST_NODE_H
-
+using namespace std;
 
 class Node
 {
 public:
-	int data;
+	string line;
 	Node *next;
 
-	Node() : next(nullptr), data(-1) {}
+	Node();
+	~Node();
 };
-
-
-#endif //LINKEDLIST_NODE_H

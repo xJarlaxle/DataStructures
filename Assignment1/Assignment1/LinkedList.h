@@ -1,7 +1,3 @@
-//
-// Created by prog2100 on 08/01/18.
-//
-
 #pragma once
 #include <iostream>
 #include "node.h"
@@ -20,6 +16,7 @@ public:
 
 	virtual ~LinkedList();
 
+	void readIn(string fileIn);
 	void add(string line);
 	void deleteNode(int nodenum);
 	string getValue(int nodenum);
