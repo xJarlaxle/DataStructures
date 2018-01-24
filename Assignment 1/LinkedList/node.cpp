@@ -1,5 +1,5 @@
-#include "Node.h"
-
+#include "node.h"
+#include "stdafx.h"
 
 
 #ifndef NULL

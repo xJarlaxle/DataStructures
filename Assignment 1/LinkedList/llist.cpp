@@ -1,10 +1,9 @@
-//
-// Created by prog2100 on 08/01/18.
-//
+// Some code structure developed by Hal O'Connell on 2012-10-29.
+//  Copyright (c) 2012 Hal O'Connell. All rights reserved.
+
 #include <iostream>
 #include "llist.h"
-
-
+#include "stdafx.h"
 
 
 using namespace std;
@@ -31,22 +30,22 @@ void LinkedList::add(string line)
 	node->line = line;
 	this->totalines++;
 
-	if (first == NULL)
+	if (first == nullptr)
 	{
 		first = node;
 	}
 	else
 	{
 		Node *currNode = first;
-		Node *prevNode = NULL;
+		Node *prevNode = nullptr;
 
-		while (currNode != NULL)
+		while (currNode != nullptr)
 		{
 			prevNode = currNode;
 			currNode = currNode->next;
 		}
 
-		if (prevNode != NULL)
+		if (prevNode != nullptr)
 		{
 			prevNode->next = node;
 		}
@@ -58,9 +57,9 @@ void LinkedList::deleteNode(int nodenum)
 	int index = -1;
 
 	Node *node = first;
-	Node *prev = NULL;
+	Node *prev = nullptr;
 
-	while (node != NULL)
+	while (node != nullptr)
 	{
 		index++;
 
@@ -96,7 +95,7 @@ string LinkedList::getValue(int nodenum)
 
 	Node *node = first;
 
-	while (node != NULL)
+	while (node != nullptr)
 	{
 		index++;
 
@@ -130,7 +129,7 @@ void LinkedList::insertAtIndex(int index, string nLine)
 		int i = 0;
 		Node *prev = first;
 
-		while (prev != NULL)
+		while (prev != nullptr)
 		{
 			if (i == index)
 			{
@@ -141,13 +140,13 @@ void LinkedList::insertAtIndex(int index, string nLine)
 			i++;
 		} // End while
 
-		if (first == NULL)
+		if (first == nullptr)
 		{
 			first = node;
 		}
 		else
 		{
-			if (prev != NULL)
+			if (prev != nullptr)
 			{
 				node->next = prev->next;
 				prev->next = node;
@@ -166,7 +165,7 @@ ostream& operator<<(ostream& output, LinkedList& list)
 	int i = 0;
 
 	// Loop while not empty
-	while (currNode != NULL)
+	while (currNode != nullptr)
 	{
 		output << i << ":   " << currNode->line << endl;
 		currNode = currNode->next;
