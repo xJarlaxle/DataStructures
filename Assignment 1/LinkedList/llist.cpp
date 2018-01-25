@@ -20,7 +20,9 @@ LinkedList::~LinkedList()
 
 		node = node->next;
 
-		delete temp;
+		if (temp != nullptr) {
+			delete temp;
+		}
 	}
 }
 

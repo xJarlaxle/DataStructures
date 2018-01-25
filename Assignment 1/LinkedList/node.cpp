@@ -7,13 +7,7 @@
 #endif 
 
 // Default constructor
-Node::Node() : next(NULL)
-{
-
-}
+Node::Node() : next(NULL){}
 
 // Destructor
-Node::~Node()
-{
-
-}
+Node::~Node(){}
