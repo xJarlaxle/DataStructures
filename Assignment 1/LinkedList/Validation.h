@@ -12,5 +12,6 @@ public:
 	//~Validation();
 
 	string checkFileName(string);
+	string justFileName(string);
 
 };//end class
