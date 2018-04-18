@@ -19,11 +19,12 @@ private:
 	item* HashTable[tableSize];
 
 public:
-
+	int collisions = 0;
 	int hashFunc(string key); //the hash function
 	Hash(); //the constructor
 	void AddItem(string word); //add the item to the hash table
 	int NumberOfItemsAtIndex(int index);
 	void PrintTable();
+
 
 };

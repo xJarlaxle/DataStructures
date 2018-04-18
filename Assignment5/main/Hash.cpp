@@ -35,6 +35,7 @@ void Hash::AddItem(string word) {
 
 	}else {
 		//collision handling
+		collisions++;
 		item* Ptr = HashTable[index]; //point to the first item at the index
 		item* n = new item;
 		n->word = word;
@@ -66,10 +67,34 @@ int Hash::NumberOfItemsAtIndex(int index) {
 }
 
 void Hash::PrintTable() {
-	//holds number of elements at each index
 	int number;
+	 //Ptr starts at the top item at the index
+
 	for (int i = 0; i < tableSize; i++) {
+		number = NumberOfItemsAtIndex(i);
+		item* Ptr = HashTable[i];
 
+		//if (Ptr->word != "empty") {
+			if (Ptr->word != "empty") {
+				if (number > 1) {
+					cout << "Index " << i << ":  ";
+					while (Ptr != NULL) {
+						if (Ptr->next != NULL) {
+							cout << Ptr->word << ", ";
+						}
+						else {
+							cout << Ptr->word << endl;
+						}
+						Ptr = Ptr->next;
+					}
+				}
+				else {
+					cout << "Index " << i << ":  " << HashTable[i]->word << endl;
+				}
+			}
+			else {
+				cout << "Index " << i << ":  NULL" << endl;
+			}
+		//}
 	}
-
 }
