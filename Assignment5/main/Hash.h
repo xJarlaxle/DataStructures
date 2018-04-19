@@ -25,6 +25,7 @@ public:
 	void AddItem(string word); //add the item to the hash table
 	int NumberOfItemsAtIndex(int index);
 	void PrintTable();
+	bool FindWord(string word);
 
 
 };

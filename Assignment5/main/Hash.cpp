@@ -98,3 +98,19 @@ void Hash::PrintTable() {
 		//}
 	}
 }
+
+bool Hash::FindWord(string word) {
+	int index = hashFunc(word); //get the index where the word is saved
+	bool foundName = false;
+	
+	item* Ptr = HashTable[index];
+
+	while (Ptr != NULL) {
+		if (Ptr->word == word) {
+			foundName = true;
+		}
+		Ptr = Ptr->next;
+	}
+
+	return foundName;
+}
