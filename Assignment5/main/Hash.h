@@ -24,8 +24,8 @@ public:
 	Hash(); //the constructor
 	void AddItem(string word); //add the item to the hash table
 	int NumberOfItemsAtIndex(int index);
-	void PrintTable();
-	bool FindWord(string word);
+	void PrintTable(); //prints out the HashTable with depth
+	bool FindWord(string word); // finds the given word in the hashtable
 
 
 };

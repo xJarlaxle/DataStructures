@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//constructor
 Hash::Hash() {
 	for (int i = 0; i < tableSize; i++) {
 		//fill up each index in the hashtable array with a null item
@@ -14,6 +15,7 @@ Hash::Hash() {
 	}
 }
 
+//hash function that turns the key into an index value
 int Hash::hashFunc(string key) {
 	int hash = 0;
 	int index;
@@ -27,6 +29,7 @@ int Hash::hashFunc(string key) {
 	return index;
 }
 
+//adds the given word to the hashtable and the appropriate key, collisions are handled as well
 void Hash::AddItem(string word) {
 	int index = hashFunc(word);
 
@@ -66,6 +69,7 @@ int Hash::NumberOfItemsAtIndex(int index) {
 	return count;
 }
 
+//prints the hash table out with depth
 void Hash::PrintTable() {
 	int number;
 	 //Ptr starts at the top item at the index
@@ -99,6 +103,7 @@ void Hash::PrintTable() {
 	}
 }
 
+//checks to see if the given word is in the hash table
 bool Hash::FindWord(string word) {
 	int index = hashFunc(word); //get the index where the word is saved
 	bool foundName = false;
