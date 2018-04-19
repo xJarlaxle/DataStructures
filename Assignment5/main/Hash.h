@@ -9,7 +9,7 @@ class Hash {
 
 private:
 	//because there are 64 words in the dictionary and 67 is the closest prime number
-	static const int tableSize = 67;
+	static const int tableSize = 53;
 	
 	struct item {
 		string word;

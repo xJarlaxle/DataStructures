@@ -17,7 +17,7 @@ Hash::Hash() {
 
 //hash function that turns the key into an index value
 int Hash::hashFunc(string key) {
-	int hash = 0;
+	/*int hash = 0;
 	int index;
 	for (int i = 0; i < key.length(); i++) {
 
@@ -26,7 +26,16 @@ int Hash::hashFunc(string key) {
 	
 	index = hash % tableSize;
 
-	return index;
+	return index;*/
+
+	//https://stackoverflow.com/jobs?utm_source=website&utm_medium=banner&utm_content=leaderboard_6&utm_campaign=house_ads_house_ads_ROS_Docs
+	int seed = 101;
+	unsigned long hash = 0;
+	for (int i = 0; i < key.length(); i++)
+	{
+		hash = (hash * seed) + key[i];
+	}
+	return hash % tableSize;
 }
 
 //adds the given word to the hashtable and the appropriate key, collisions are handled as well
